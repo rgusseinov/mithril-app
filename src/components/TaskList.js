@@ -10,6 +10,26 @@ const TaskList = {
         m("h1", "Task Tracker"),
         m("a.btn.btn-primary", { href: "/add", oncreate: m.route.link }, "Add New Task"),
       ]),
+      m('div.d-flex justify-content-between mb-3', [
+        m('div.form-group', [
+          m('label.form-label', { for: "filterStatus" }, 'Filter by Status:'),
+          m("select.form-select", [
+            m("option", { value: "All" }, "All"),
+            m("option", { value: "completed" }, "Completed"),
+            m("option", { value: "incomplete" }, "Incomplete"),
+          ]),
+        ]),
+        m('div.form-group', [
+          m('label.form-label', { for: "searchTask" }, 'Search Tasks:'),
+          m('input', {
+            type: 'input',
+            id: 'searchTask',
+            class: 'form-control',
+            placeholder: 'Search by task name...'
+          }, [])
+        ]),
+        
+      ]),
       m("ul.list-group", this.tasks.map((task) =>
         m("li.list-group-item.d-flex.justify-content-between.align-items-center", [
           m("span", task.title),
